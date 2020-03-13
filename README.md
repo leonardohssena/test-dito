@@ -27,7 +27,7 @@ http://localhost:3001/api/v1/timeline
 # Busca os eventos a partir de parte do nome do evento
 Metodo: GET
 http://localhost:3001/api/v1/collector/search?event=bu
-- mglt: String contendo o evento a ser pesquisado, total ou parcial.
+- event: String contendo o evento a ser pesquisado, total ou parcial.
 
 # Post Collector
 # Cria um objeto do tipo Collector com os atributos "event" e "timestamp"
