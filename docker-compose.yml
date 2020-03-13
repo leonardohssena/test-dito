@@ -1,0 +1,28 @@
+version: 2
+services:
+  app:
+    image: api-test-dito-production
+    environment:
+      NODE_ENV: production
+      PORT: 80
+      LOGGER_LEVEL: info
+      mongoDB: mongodb+srv://useraccess:4UGcUNVI1oNUglSB@cluster0-i1knx.mongodb.net/dito?retryWrites=true&w=majority
+      externalApiBaseURL: https://storage.googleapis.com/dito-questions/events.json
+    ports:
+      - 8001:80/tcp
+  app-dev:
+    image: api-test-dito-development
+    environment: 
+      NODE_ENV: development
+      PORT: 80
+      LOGGER_LEVEL: debug
+      mongoDB: mongodb://mongo:27017/dito?retryWrites=true&w=majority
+      externalApiBaseURL: https://storage.googleapis.com/dito-questions/events.json
+    ports:
+      - 3001:80/tcp
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
